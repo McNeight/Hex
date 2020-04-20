@@ -1,0 +1,2 @@
+# Hex
+Hexadecimal utility class
