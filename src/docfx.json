@@ -1,0 +1,75 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "src/**.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "../docfx/api",
+      "properties": {
+        "TargetFramework": "netstandard1.1"
+      },
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "docfx/api/**.yml",
+          "docfx/api/index.md"
+        ],
+        "src": ".."
+      },
+      {
+        "files": [
+          "docfx/articles/**.md",
+          "docfx/articles/**/toc.yml",
+          "docfx/toc.yml",
+          "docfx/*.md"
+        ],
+        "src": ".."
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "docfx/images/**"
+        ],
+        "src": ".."
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "docfx/apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**"
+        ],
+        "src": ".."
+      }
+    ],
+    "dest": "../docs",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": true,
+    "disableGitFeatures": false
+  }
+}

@@ -1,0 +1,14 @@
+language: csharp
+dotnet: 2.1.802
+mono: none
+os:
+  - linux
+  - osx
+solution: Hex.sln
+script:
+  - dotnet build --configuration Release Hex.sln
+  # - dotnet test
+cache:
+  directories:
+    - artifacts
+    - docs
