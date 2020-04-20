@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)|$(Platform)'!='CI|AnyCPU'">
       <!-- .NET Standard -->
       <!--netstandard1.0;-->
       netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;
@@ -20,10 +20,14 @@
       net47;net471;net472;
       net48;
     </TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
+      netstandard1.1
+    </TargetFrameworks>
     <AssemblyName>McNeight.Hex</AssemblyName>
     <SignAssembly>False</SignAssembly>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <RootNamespace>McNeight</RootNamespace>
+    <Configurations>Debug;Release;CI</Configurations>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -45,9 +49,6 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -55,12 +56,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.1|AnyCPU'">
-    <DocumentationFile>D:\dev\b\hash-build\Hex-github\artifacts\McNeight.Hex.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.1|AnyCPU'">
-    <DocumentationFile>D:\dev\b\hash-build\Hex-github\artifacts\McNeight.Hex.xml</DocumentationFile>
+    <DocumentationFile>..\artifacts\McNeight.Hex.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -72,11 +73,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+    <PackageReference Condition="'$(Configuration)'!='CI'" Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <PackageReference Condition="'$(Configuration)'!='CI'" Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

@@ -53,7 +53,7 @@ init:
 #---------------------------------#
 
 # build Configuration, i.e. Debug, Release, etc.
-configuration: Release
+configuration: CI
 
 # build platform, i.e. x86, x64, Any CPU. This setting is optional.
 platform: Any CPU

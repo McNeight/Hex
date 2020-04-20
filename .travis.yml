@@ -6,7 +6,7 @@ os:
   - osx
 solution: Hex.sln
 script:
-  - dotnet build --configuration Release Hex.sln
+  - dotnet build --configuration CI Hex.sln
   # - dotnet test
 cache:
   directories:
